@@ -1,23 +1,21 @@
-# class user:
+import hashlib
+class User:
 
 
 
-#     def __init__(self,name):
-#         self.name = name
-#         self.amount_donated = 0
+    def __init__(self,first_name,last_name,password):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.password = password
 
-
-
-
-
-
-
-
-
-#     def donate(self,amount):
-
-#         self.amount_donated += amount
     
+    def hash_password(self,password):
+        return hashlib.sha256(password.encode()).hexdigest()
 
 
-#     def get_donated_amount(self,amount):
+
+    def verify_password(self,password):
+        return self.hash_password(password) == self.password
+
+
+
